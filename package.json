@@ -1,0 +1,25 @@
+{
+  "name": "url_shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffnamenye/UrlShortener.git"
+  },
+  "author": "JNamenye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffnamenye/UrlShortener/issues"
+  },
+  "homepage": "https://github.com/jeffnamenye/UrlShortener#readme",
+  "dependencies": {
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0",
+    "mocha": "^3.2.0",
+    "sequelize": "^3.30.2"
+  }
+}
