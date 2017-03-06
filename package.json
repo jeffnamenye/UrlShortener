@@ -17,9 +17,14 @@
   },
   "homepage": "https://github.com/jeffnamenye/UrlShortener#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.0",
+    "dotenv": "^4.0.0",
     "express": "^4.15.0",
+    "localenvironment": "^1.0.2",
     "mocha": "^3.2.0",
+    "mysql": "^2.13.0",
     "sequelize": "^3.30.2"
   }
 }

@@ -1,22 +1,22 @@
 const db = require('./db');
-
-// create
+require('dotenv').config();
+// This creates the urls in the db
 exports.create = (payload, err, success) => {
-  db.user.create(payload).then(success).catch(err);
+  db.url.create(payload).then(success).catch(err);
 };
 
-// find all
+//This finds all the urls in my db
 exports.findAll = (err, success) => {
-  db.user.findAll().then(success).catch(err);
+  db.url.findAll().then(success).catch(err);
 };
 
-// find by id
+//This finds the urls by id
 exports.find = (payload, err, success) => {
-  db.user.find({
+  db.url.find({
     where: {
       id: payload.id,
     },
-    // find all relations in sequelize
+    //This find all of the relations in sequelize
     include: [{
       all: true,
       nested: true,
@@ -24,9 +24,19 @@ exports.find = (payload, err, success) => {
   }).then(success).catch(err);
 };
 
-// update
+// redirect
+exports.go = (payload, err, success) => {
+  // finds where shortURL is same as payload
+  db.url.find({
+    where: {
+      shortURL: payload.shortURL,
+    },
+  }).then(success).catch(err);
+};
+
+//This updates my db
 exports.update = (payload, err, success) => {
-  db.user.find({
+  db.url.find({
     where: {
       id: payload.id,
     },
@@ -35,9 +45,9 @@ exports.update = (payload, err, success) => {
   }).catch(err);
 };
 
-// delete
+//This deletes the urls in the db
 exports.destroy = (payload, err, success) => {
-  db.user.destroy({
+  db.url.destroy({
     where: {
       id: payload.id,
     },
