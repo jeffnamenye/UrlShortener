@@ -1,6 +1,6 @@
 // my url generator module
 const bcrypt = require('bcrypt-nodejs');
-require('dotenv').config();
+
 //This sets up my generate module
 exports.shortURL = () => {
   // string of letters

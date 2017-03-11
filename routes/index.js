@@ -14,7 +14,7 @@ module.exports = (express) => {
   // linking routes
   router.use('/api/v1.1.0/', require('./api/url')(express));
   router.use('/api/v1.1.0/', require('./api/user')(express));
-
+  router.use('/api', require('./api/hoity'))
   // returns correct data
   return router;
 };
