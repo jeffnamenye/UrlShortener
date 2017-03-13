@@ -1,20 +1,14 @@
 module.exports = (express) => {
   const router = express.Router();
 
-  //This is my route to get hello dude
-  router.get('/', (req, res) => {
-    res.json({ hello: 'dude' });
+  // route to get hello world
+  router.post('/status', (req, res) => {
+    res.json({
+      healthy: true,
+    })
   });
 
-  //This is my route to check api status
-  router.get('/status', (req, res) => {
-    res.json({ healty: true });
-  });
+router.use('/api/', require('./api/user')(express));
 
-  // linking routes
-  router.use('/api/v1.1.0/', require('./api/url')(express));
-  router.use('/api/v1.1.0/', require('./api/user')(express));
-  router.use('/api', require('./api/hoity'))
-  // returns correct data
   return router;
-};
+}

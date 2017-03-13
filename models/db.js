@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-require('localenvironment');
+//require('localenvironment');
 require('dotenv').config();
 //This defines my db connection
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
@@ -24,29 +24,35 @@ const user = sequelize.define('user', {
   },
   password: {
     type: Sequelize.STRING,
+  }
+});
+
+const course = sequelize.define('course',{
+  name: {
+    type: Sequelize.STRING,
   },
-  tokenreq: {
-    type: Sequelize.BOOLEAN,
+  code: {
+    type: Sequelize.STRING,
   },
 });
 
 //This defines the url
-const url = sequelize.define('url', {
-  url: {
-    type: Sequelize.STRING,
-  },
-  shortURL: {
-    type: Sequelize.STRING,
-  },
-});
+//const url = sequelize.define('url', {
+//  url: {
+//    type: Sequelize.STRING,
+//  },
+//  shortURL: {
+//    type: Sequelize.STRING,
+//  },
+//});
 
 //This joins between the user and url
-user.hasMany(url, {
-  foreignKey: 'userID',
-});
+course.hasMany(user, {
+  foreignKey: 'courseID',
+})
 
 sequelize.sync();
 
 exports.sequelize = sequelize;
 exports.user = user;
-exports.url = url;
+//exports.url = url;
