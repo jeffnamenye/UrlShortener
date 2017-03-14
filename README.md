@@ -18,3 +18,8 @@ Now you need to use "postman"(https://www.getpostman.com/) once thats loaded cha
 http://hoitytoity.com/LwnpwSH in your results box about middle of the page.
 
 Or if you want to see it work in your browser, you have to to go into Routes then api then on line 10 you should see this **router.post** all you have to do is change *post to get* then type **localhost:3000/api/v1.0.0.0/url** into your browser window and should see this in your screen "http://hoitytoity.com/Go9PM1n"
+
+***Update***
+To be able to run it with the data base their are a few things to download. First is mysql, localenvironment, dotenv, sequelize, eslint, bcrypt, bcrypt-nodejs. I think thats all, now you want eslint as a devDependencies, to do that all you have to do is **npm install eslint --save-dev** then the rest you do as normal ex. **npm install localenvironment**
+
+Then you have to start mysql in your command prompt, you do that by *mysql.server start** then you have to have SQLpro started with 127.0.0.1 and also host is the same...user name is root with no password. And once that starts you need to add a database with MariaDB. 

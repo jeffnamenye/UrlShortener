@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt-nodejs');
 // my url generator module
-exports.Url_Short = (link)=>{
+exports.genURL = (link)=>{
   var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';
   var URL_text_length = 7;
   var URL_text = 'hoitytoity.com';
@@ -8,7 +8,7 @@ exports.Url_Short = (link)=>{
   for(var i = 0; i < URL_text_length; i++){
     URL_text += abc.charAt((Math.random()) * abc.length);
 
-  }
+  };
   return URL_text;
 };
 
