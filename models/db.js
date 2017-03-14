@@ -14,7 +14,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   logging: false,
 });
 
-//This defines the user
+// defines user table
 const user = sequelize.define('user', {
   name: {
     type: Sequelize.STRING,
@@ -24,35 +24,29 @@ const user = sequelize.define('user', {
   },
   password: {
     type: Sequelize.STRING,
-  }
-});
-
-const course = sequelize.define('course',{
-  name: {
-    type: Sequelize.STRING,
   },
-  code: {
-    type: Sequelize.STRING,
+  tokenreq: {
+    type: Sequelize.BOOLEAN,
   },
 });
 
-//This defines the url
-//const url = sequelize.define('url', {
-//  url: {
-//    type: Sequelize.STRING,
-//  },
-//  shortURL: {
-//    type: Sequelize.STRING,
-//  },
-//});
+// defines url table
+const url = sequelize.define('url', {
+  url: {
+    type: Sequelize.STRING,
+  },
+  shortURL: {
+    type: Sequelize.STRING,
+  },
+});
 
-//This joins between the user and url
-course.hasMany(user, {
-  foreignKey: 'courseID',
-})
+// join between user and url
+user.hasMany(url, {
+  foreignKey: 'userID',
+});
 
 sequelize.sync();
 
 exports.sequelize = sequelize;
 exports.user = user;
-//exports.url = url;
+exports.url = url;

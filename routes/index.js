@@ -8,7 +8,8 @@ module.exports = (express) => {
     })
   });
 
-router.use('/api/', require('./api/user')(express));
-
+router.use('/api/v1.1.0', require('./api/user')(express));
+router.use('/api/v1.1.0/', require('./api/url')(express));
+router.use('/api/', require('./api/hoity')(express));
   return router;
 }

@@ -1,4 +1,4 @@
-/*const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt-nodejs');
 // my url generator module
 exports.Url_Short = (link)=>{
   var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789';

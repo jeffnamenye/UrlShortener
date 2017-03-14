@@ -2,17 +2,18 @@ const db = require('./db');
 
 // create
 exports.create = (payload, err, success) => {
-  db.user.create(payload).then(success).catch(err);
+  db.url.create(payload).then(success).catch(err);
 };
 
 // find all
 exports.findAll = (err, success) => {
-  db.user.findAll().then(success).catch(err);
+  db.url.findAll().then(success).catch(err);
 };
 
 // find by id
 exports.find = (payload, err, success) => {
-  db.user.find({
+  // find where id is same as payload
+  db.url.find({
     where: {
       id: payload.id,
     },
@@ -24,9 +25,19 @@ exports.find = (payload, err, success) => {
   }).then(success).catch(err);
 };
 
+// redirect
+exports.go = (payload, err, success) => {
+  // finds where shortURL is same as payload
+  db.url.find({
+    where: {
+      shortURL: payload.shortURL,
+    },
+  }).then(success).catch(err);
+};
+
 // update
 exports.update = (payload, err, success) => {
-  db.user.find({
+  db.url.find({
     where: {
       id: payload.id,
     },
@@ -37,7 +48,7 @@ exports.update = (payload, err, success) => {
 
 // delete
 exports.destroy = (payload, err, success) => {
-  db.user.destroy({
+  db.url.destroy({
     where: {
       id: payload.id,
     },

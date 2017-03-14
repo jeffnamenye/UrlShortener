@@ -1,24 +1,27 @@
-const user = require('../../models/user');
+// links to link generation model
 const gen = require('../../models/url');
+const url = require('../../models/urlShort');
 
+// accepts express as a parameter of express
 module.exports = (express) => {
+  // express router function
   const router = express.Router();
 
-  // create
-  router.post('/users', (req, res) => {
+  //  create
+  router.post('/urls', (req, res) => {
     const rb = req.body;
-    // hashes password before create
-    rb.password = gen.generateHash(rb.password);
-    user.create(req.body, (err) => {
+    // generates shorturl
+    rb.shortURL = gen.genURL(url);
+    url.create(req.body, (err) => {
       res.status(500).json(err);
     }, (data) => {
       res.status(200).json(data);
     });
   });
 
-  // get all
-  router.get('/users', (req, res) => {
-    user.findAll((err) => {
+  // get
+  router.get('/urls', (req, res) => {
+    url.findAll((err) => {
       res.status(500).json(err);
     }, (data) => {
       res.status(200).json(data);
@@ -26,10 +29,10 @@ module.exports = (express) => {
   });
 
   // get by id
-  router.get('/users/:id', (req, res) => {
+  router.get('/urls/:id', (req, res) => {
     const rb = req.body;
     rb.id = req.params.id;
-    user.find(req.body, (err) => {
+    url.find(req.body, (err) => {
       res.status(500).json(err);
     }, (data) => {
       res.status(200).json(data);
@@ -37,12 +40,10 @@ module.exports = (express) => {
   });
 
   // update
-  router.post('/users/:id', (req, res) => {
+  router.post('/urls/:id', (req, res) => {
     const rb = req.body;
     rb.id = req.params.id;
-    // hashes new password
-    rb.password = gen.generateHash(rb.password);
-    user.update(req.body, (err) => {
+    url.update(req.body, (err) => {
       res.status(500).json(err);
     }, (data) => {
       res.status(200).json(data);
@@ -50,10 +51,10 @@ module.exports = (express) => {
   });
 
   // delete
-  router.delete('/users/:id', (req, res) => {
+  router.delete('/urls/:id', (req, res) => {
     const rb = req.body;
     rb.id = req.params.id;
-    user.destroy(req.body, (err) => {
+    url.destroy(req.body, (err) => {
       res.status(500).json(err);
     }, (data) => {
       res.status(200).json(data);
